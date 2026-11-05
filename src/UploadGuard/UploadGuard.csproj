@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>true</IsPackable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PackageId>UploadGuard</PackageId>
+    <Description>Secure file upload validation for ASP.NET Core: magic-byte detection, allow-list policies, a Minimal API endpoint filter and an MVC attribute, zip bomb, Office macro, PDF JavaScript and SVG script checks, an antivirus hook and safe storage. Aligned with the OWASP File Upload Cheat Sheet. No dependencies.</Description>
+    <PackageTags>upload;file-upload;validation;iformfile;magic-bytes;file-signature;mime;security;owasp;aspnetcore;minimal-api;zip-bomb</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+</Project>
