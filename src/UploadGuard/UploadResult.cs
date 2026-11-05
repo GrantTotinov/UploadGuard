@@ -9,7 +9,10 @@ public enum UploadErrorCode
     /// <summary>The file, or the image it decodes to, is larger than the policy allows.</summary>
     TooLarge,
 
-    /// <summary>The file name is empty, too long, has a path, control or bidi characters, or a dangerous inner extension.</summary>
+    /// <summary>
+    /// The file name is empty or too long, has a path, a colon, control or invisible formatting characters, a leading
+    /// dot or hyphen, consecutive dots, a device name, or an executable inner extension such as <c>shell.php.jpg</c>.
+    /// </summary>
     InvalidFileName,
 
     /// <summary>The content does not match any type UploadGuard knows.</summary>

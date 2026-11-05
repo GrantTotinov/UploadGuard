@@ -233,6 +233,9 @@ public sealed partial class UploadPipeline
             foreach (var transformer in policy.Transformers)
             {
                 current.Position = 0;
+
+                // Transform output is buffered in memory. Image re-encoding is bounded by its pixel limit;
+                // switch to a temporary FileStream if a transform can produce large output.
                 var output = new MemoryStream();
                 FileType? outputType;
                 try

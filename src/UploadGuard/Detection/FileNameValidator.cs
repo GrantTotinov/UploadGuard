@@ -50,9 +50,14 @@ internal static class FileNameValidator
             return "The file name contains a path, a reserved character or an invisible formatting character.";
         }
 
-        if (name[0] is '.' or ' ' || name[^1] is '.' or ' ')
+        if (name[0] is '.' or ' ' or '-' || name[^1] is '.' or ' ')
         {
-            return "The file name starts or ends with a dot or a space.";
+            return "The file name starts with a dot, a space or a hyphen, or ends with a dot or a space.";
+        }
+
+        if (name.Contains("..", StringComparison.Ordinal))
+        {
+            return "The file name contains consecutive dots.";
         }
 
         var parts = name.Split('.');
