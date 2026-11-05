@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  build:
+    name: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # MinVer needs tags
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet build -c Release -warnaserror
+      - run: dotnet test -c Release --no-build
+      - if: matrix.os == 'ubuntu-latest'
+        run: dotnet format --verify-no-changes
+      - if: matrix.os == 'ubuntu-latest'
+        name: Pack
+        run: |
+          dotnet pack src/UploadGuard -c Release --no-build -o artifacts
+          dotnet pack src/UploadGuard.ClamAV -c Release --no-build -o artifacts
+          dotnet pack src/UploadGuard.PixelForge -c Release --no-build -o artifacts
+      - if: matrix.os == 'ubuntu-latest'
+        name: Benchmarks (outside the solution) build and comparison table
+        run: |
+          dotnet build benchmarks/UploadGuard.Benchmarks -c Release -warnaserror
+          dotnet format benchmarks/UploadGuard.Benchmarks/UploadGuard.Benchmarks.csproj --verify-no-changes
+          dotnet run -c Release --no-build --project benchmarks/UploadGuard.Benchmarks -- --compare >> "$GITHUB_STEP_SUMMARY"
+
+  clamav:
+    name: real clamd
+    runs-on: ubuntu-latest
+    services:
+      clamav:
+        image: clamav/clamav:stable
+        ports: ['3310:3310']
+    env:
+      CLAMAV_HOST: localhost
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet build -c Release -warnaserror
+      - name: Wait for clamd (the first start downloads the signature database)
+        run: |
+          for i in $(seq 1 60); do
+            if (exec 3<>/dev/tcp/localhost/3310 && printf 'zPING\0' >&3 && timeout 5 head -c 4 <&3 | grep -q PONG) 2>/dev/null; then
+              echo "clamd is up"; exit 0
+            fi
+            sleep 5
+          done
+          echo "clamd did not start" && exit 1
+      - run: dotnet test -c Release --no-build
