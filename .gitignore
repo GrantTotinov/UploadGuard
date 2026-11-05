@@ -6,3 +6,4 @@ BenchmarkDotNet.Artifacts/
 *.user
 .vs/
 .idea/
+App_Data/

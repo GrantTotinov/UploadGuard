@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/UploadApi/UploadApi.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/UploadGuard/UploadGuard.csproj" />
+    <Project Path="src/UploadGuard.ClamAV/UploadGuard.ClamAV.csproj" />
+    <Project Path="src/UploadGuard.PixelForge/UploadGuard.PixelForge.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/UploadGuard.Tests/UploadGuard.Tests.csproj" />
+  </Folder>
+</Solution>
