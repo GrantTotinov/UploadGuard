@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>true</IsPackable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PackageId>UploadGuard.PixelForge</PackageId>
+    <Description>Image re-encoding (content disarm and reconstruction) for UploadGuard, built on PixelForge: strips EXIF and GPS, removes appended and polyglot payloads, and rejects decompression bombs.</Description>
+    <PackageTags>upload;image;sanitize;cdr;exif;gps;polyglot;security;pixelforge;skiasharp</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UploadGuard\UploadGuard.csproj" />
+    <PackageReference Include="PixelForge" />
+  </ItemGroup>
+
+</Project>
