@@ -2,9 +2,19 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow [Semantic Versioning](https://semver.org/).
 
-## [0.1.0] - Unreleased
+## [0.1.0-preview.2] - 2026-11-07
 
-First release.
+### Changed
+
+- UploadGuard.PixelForge depends on PixelForge 0.1.1 (SkiaSharp 4.154.0).
+
+### Fixed
+
+- The install commands in the README use `--prerelease`, and the README links work on nuget.org.
+
+## [0.1.0-preview.1] - 2026-11-07
+
+First preview.
 
 ### Added
 
@@ -25,4 +35,5 @@ First release.
 - **UploadGuard.PixelForge**
   - `ReencodeImages` re-encodes JPEG, PNG, GIF, BMP and WebP, removing metadata and appended data, with a pixel limit checked before decoding.
 
-[0.1.0]: https://github.com/GrantTotinov/UploadGuard/releases/tag/v0.1.0
+[0.1.0-preview.2]: https://github.com/GrantTotinov/UploadGuard/releases/tag/v0.1.0-preview.2
+[0.1.0-preview.1]: https://github.com/GrantTotinov/UploadGuard/releases/tag/v0.1.0-preview.1
