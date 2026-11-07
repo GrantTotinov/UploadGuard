@@ -78,6 +78,8 @@ public sealed class PolicyTests
     [InlineData("invoice\u202Egpj.exe.jpg")]
     [InlineData("photo\u200B.jpg")]
     [InlineData(".htaccess.jpg")]
+    [InlineData("-rf.jpg")]
+    [InlineData("photo..jpg")]
     [InlineData("photo.jpg.")]
     [InlineData("photo.jpg ")]
     [InlineData(" photo.jpg")]
