@@ -180,7 +180,7 @@ public sealed class ClamAVTests : IAsyncDisposable
                 {
                     client = await _listener.AcceptTcpClientAsync(_stop.Token);
                 }
-                catch (Exception e) when (e is OperationCanceledException or SocketException or ObjectDisposedException)
+                catch (Exception e) when (e is OperationCanceledException or SocketException or ObjectDisposedException or InvalidOperationException)
                 {
                     return;
                 }
