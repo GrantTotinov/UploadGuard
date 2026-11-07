@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <!-- BenchmarkDotNet requires public, non-sealed benchmark classes. -->
+    <NoWarn>$(NoWarn);CA1515;CA1822</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" />
+    <PackageReference Include="Mime-Detective" />
+    <PackageReference Include="File.TypeChecker" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\UploadGuard\UploadGuard.csproj" />
+    <ProjectReference Include="..\..\src\UploadGuard.PixelForge\UploadGuard.PixelForge.csproj" />
+    <Compile Include="..\..\tests\UploadGuard.Tests\Samples.cs" Link="Samples.cs" />
+  </ItemGroup>
+
+</Project>
