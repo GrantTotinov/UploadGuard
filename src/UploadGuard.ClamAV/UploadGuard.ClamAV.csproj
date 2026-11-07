@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>true</IsPackable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PackageId>UploadGuard.ClamAV</PackageId>
+    <Description>Async ClamAV (clamd) client and virus scanner for UploadGuard: INSTREAM, PING and VERSION, dependency injection and an ASP.NET Core health check. Not affiliated with Cisco or the ClamAV project.</Description>
+    <PackageTags>clamav;clamd;antivirus;virus-scan;malware;upload;iformfile;security;aspnetcore;health-check</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UploadGuard\UploadGuard.csproj" />
+  </ItemGroup>
+
+</Project>
