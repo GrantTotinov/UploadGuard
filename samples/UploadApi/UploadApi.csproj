@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\UploadGuard\UploadGuard.csproj" />
+    <ProjectReference Include="..\..\src\UploadGuard.ClamAV\UploadGuard.ClamAV.csproj" />
+    <ProjectReference Include="..\..\src\UploadGuard.PixelForge\UploadGuard.PixelForge.csproj" />
+  </ItemGroup>
+
+</Project>
